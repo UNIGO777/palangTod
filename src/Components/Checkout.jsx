@@ -41,7 +41,7 @@ const Checkout = ({ onBack }) => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch('http://localhost:5001/api/products/default');
+        const response = await fetch('https://palangtodbackend.onrender.com/api/products/default');
         const data = await response.json();
         
         if (data.success && data.data) {
@@ -158,7 +158,7 @@ const Checkout = ({ onBack }) => {
   // Create order
   const createOrder = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/orders/create', {
+      const response = await fetch('https://palangtodbackend.onrender.com/api/orders/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -215,7 +215,7 @@ const Checkout = ({ onBack }) => {
       handler: async (response) => {
         try {
           // Verify payment
-          const verifyResponse = await fetch('http://localhost:5001/api/orders/verify-payment', {
+          const verifyResponse = await fetch('https://palangtodbackend.onrender.com/api/orders/verify-payment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
