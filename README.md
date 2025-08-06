@@ -99,7 +99,7 @@ A complete full-stack e-commerce landing page for Neelkanth Palangtod Capsules w
    npm run dev
    ```
 
-   The backend will be available at `https://api.palangtod.store/`
+   The backend will be available at `https://api.palangtod.store`
 
 ### Frontend Setup
 

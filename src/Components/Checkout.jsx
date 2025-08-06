@@ -45,7 +45,7 @@ const Checkout = ({ onBack }) => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch('https://api.palangtod.store//api/products/default');
+        const response = await fetch('https://api.palangtod.store/api/products/default');
         const data = await response.json();
         
         if (data.success && data.data) {
@@ -163,7 +163,7 @@ const Checkout = ({ onBack }) => {
   // Create order
   const createOrder = async () => {
     try {
-      const response = await fetch('https://api.palangtod.store//api/orders/create', {
+      const response = await fetch('https://api.palangtod.store/api/orders/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -222,7 +222,7 @@ const Checkout = ({ onBack }) => {
       handler: async (response) => {
         try {
           // Verify payment
-          const verifyResponse = await fetch('https://api.palangtod.store//api/orders/verify-payment', {
+          const verifyResponse = await fetch('https://api.palangtod.store/api/orders/verify-payment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

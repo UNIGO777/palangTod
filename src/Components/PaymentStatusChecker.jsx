@@ -11,7 +11,7 @@ const PaymentStatusChecker = ({ orderId, onSuccess }) => {
       setIsChecking(true);
       
       try {
-        const response = await fetch(`https://api.palangtod.store//api/orders/${orderId}`);
+        const response = await fetch(`https://api.palangtod.store/api/orders/${orderId}`);
         const data = await response.json();
         
         if (data.success && data.data) {

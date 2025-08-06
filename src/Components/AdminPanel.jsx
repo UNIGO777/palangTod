@@ -41,7 +41,7 @@ const AdminPanel = () => {
       setLoginError('');
 
       try {
-        const response = await fetch('https://api.palangtod.store//api/admin/login', {
+        const response = await fetch('https://api.palangtod.store/api/admin/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const AdminPanel = () => {
     const fetchAnalytics = async () => {
       try {
         const token = localStorage.getItem('adminToken');
-        const response = await fetch('https://api.palangtod.store//api/orders/analytics/summary', {
+        const response = await fetch('https://api.palangtod.store/api/orders/analytics/summary', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -324,7 +324,7 @@ const AdminPanel = () => {
           ...(statusFilter !== 'all' && { status: statusFilter })
         });
 
-        const response = await fetch(`https://api.palangtod.store//api/orders?${params}`, {
+        const response = await fetch(`https://api.palangtod.store/api/orders?${params}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -358,7 +358,7 @@ const AdminPanel = () => {
     const updateOrderStatus = async (orderId, newStatus) => {
       try {
         const token = localStorage.getItem('adminToken');
-        const response = await fetch(`https://api.palangtod.store//api/orders/${orderId}/status`, {
+        const response = await fetch(`https://api.palangtod.store/api/orders/${orderId}/status`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
