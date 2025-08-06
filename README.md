@@ -99,7 +99,7 @@ A complete full-stack e-commerce landing page for Neelkanth Palangtod Capsules w
    npm run dev
    ```
 
-   The backend will be available at `http://localhost:5001`
+   The backend will be available at `http://31.97.230.67:5001`
 
 ### Frontend Setup
 
