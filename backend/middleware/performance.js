@@ -57,30 +57,49 @@ const performanceMonitor = (req, res, next) => {
   const startTime = Date.now();
 
   // Add request start time to response headers for debugging
-  res.set('X-Request-Start', startTime.toString());
+  try {
+    res.set('X-Request-Start', startTime.toString());
+  } catch (error) {
+    // Headers already sent, ignore
+  }
 
-  // Once the response is finished, calculate and log the time taken
-  res.on('finish', () => {
+  // Store original res.end method
+  const originalEnd = res.end;
+  
+  // Override res.end to add timing headers before response is sent
+  res.end = function(...args) {
     const end = process.hrtime(start);
     const time = (end[0] * 1000 + end[1] / 1000000).toFixed(2);
     
-    // Add response time to headers
-    res.set('X-Response-Time', `${time}ms`);
-    
-    // Color-coded logging based on response time
-    if (time > 1000) {
-      console.error(`🔴 VERY SLOW REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
-    } else if (time > 500) {
-      console.warn(`🟡 SLOW REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
-    } else if (time > 200) {
-      console.log(`🟠 MODERATE REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
-    } else {
-      // Only log fast requests in development
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`🟢 FAST REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
+    // Try to add response time header before sending response
+    try {
+      if (!res.headersSent) {
+        res.set('X-Response-Time', `${time}ms`);
       }
+    } catch (error) {
+      // Headers already sent, ignore
     }
-  });
+    
+    // Call original end method
+    originalEnd.apply(this, args);
+    
+    // Log performance after response is sent
+    setImmediate(() => {
+      // Color-coded logging based on response time
+      if (time > 1000) {
+        console.error(`🔴 VERY SLOW REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
+      } else if (time > 500) {
+        console.warn(`🟡 SLOW REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
+      } else if (time > 200) {
+        console.log(`🟠 MODERATE REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
+      } else {
+        // Only log fast requests in development
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`🟢 FAST REQUEST: ${req.method} ${req.originalUrl} took ${time}ms`);
+        }
+      }
+    });
+  };
 
   next();
 };
