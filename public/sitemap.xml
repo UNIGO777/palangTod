@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://palangtod.com/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://palangtod.com/assets/ProductImage.png</image:loc>
+      <image:title>Neelkanth Palangtod Capsules - Natural Ayurvedic Strength Enhancement</image:title>
+      <image:caption>100% Natural Ayurvedic capsules for strength, energy, and stamina enhancement</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://palangtod.com/assets/HeroImage.png</image:loc>
+      <image:title>Neelkanth Palangtod Hero Image</image:title>
+      <image:caption>Premium Ayurvedic supplements for natural wellness</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Checkout Section -->
+  <url>
+    <loc>https://palangtod.com/#checkout</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://palangtod.com/privacy-policy</loc>
+    <lastmod>2024-01-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Terms and Conditions -->
+  <url>
+    <loc>https://palangtod.com/terms-and-conditions</loc>
+    <lastmod>2024-01-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Shipping Policy -->
+  <url>
+    <loc>https://palangtod.com/shipping-policy</loc>
+    <lastmod>2024-01-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Cancellation and Refunds -->
+  <url>
+    <loc>https://palangtod.com/cancellation-refunds</loc>
+    <lastmod>2024-01-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Contact Us -->
+  <url>
+    <loc>https://palangtod.com/contact-us</loc>
+    <lastmod>2024-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>

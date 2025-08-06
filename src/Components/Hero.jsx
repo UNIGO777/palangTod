@@ -33,20 +33,23 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative text-white flex items-center justify-between min-h-[70vh] overflow-hidden py-12 sm:py-16 lg:py-20">
-      {/* Animated Background Image */}
-      <motion.div
-        variants={bgFadeVariants}
-        initial="initial"
-        animate="animate"
-        className="absolute inset-0 w-full h-full bg-black"
-        style={{
-          backgroundImage: `url(${HERO_BG_IMAGE})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      />
+    <main>
+      <section className="relative text-white flex items-center justify-between min-h-[70vh] overflow-hidden py-12 sm:py-16 lg:py-20" aria-labelledby="hero-heading">
+        {/* Animated Background Image */}
+        <motion.div
+          variants={bgFadeVariants}
+          initial="initial"
+          animate="animate"
+          className="absolute inset-0 w-full h-full bg-black"
+          style={{
+            backgroundImage: `url(${HERO_BG_IMAGE})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+          role="img"
+          aria-label="Neelkanth Palangtod Capsules - Natural Ayurvedic strength enhancement background"
+        />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,6 +63,7 @@ const Hero = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               <div className="flex flex-col items-center">
                 <motion.h1 
+                  id="hero-heading"
                   variants={textVariants}
                   className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-red-700 mb-2 uppercase text-center"
                 >
@@ -122,9 +126,9 @@ const Hero = () => {
               variants={textVariants}
               className="flex flex-col items-center gap-3 mb-6"
             >
-              <span className="text-3xl sm:text-4xl font-bold">₹999</span>
-              <span className="text-base sm:text-lg line-through opacity-75">₹1999</span>
-              <span className="bg-black text-white px-3 py-1 rounded text-sm sm:text-base">50% OFF</span>
+              <span className="text-3xl sm:text-4xl font-bold">₹449</span>
+              <span className="text-base sm:text-lg line-through opacity-75">₹998</span>
+              <span className="bg-black text-white px-3 py-1 rounded text-sm sm:text-base">55% OFF</span>
             </motion.div>
             <motion.ul
               variants={textVariants}
@@ -145,13 +149,15 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="block w-full bg-black text-white font-bold py-3 rounded hover:bg-gray-800 uppercase text-center text-sm sm:text-base"
+              aria-label="Buy Neelkanth Palangtod Capsules now - Go to checkout"
             >
               Buy Now
             </motion.a>
           </motion.div>
         </div>
       </div>
-    </section>
+      </section>
+    </main>
   )
 }
 

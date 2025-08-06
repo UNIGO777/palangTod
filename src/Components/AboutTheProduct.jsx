@@ -71,9 +71,16 @@ const AboutTheProduct = () => {
   ]
 
   return (
-    <section className="py-8 relative sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-8 relative sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white" aria-labelledby="about-product-heading">
       <div className="px-4 sm:px-8 md:px-12 lg:px-20 mx-auto max-w-7xl">
-      <img src="https://img.freepik.com/free-photo/close-up-couple-having-intimacy-moments_23-2149169149.jpg?semt=ais_hybrid&w=740" alt="" className="w-full mb-10 md:hidden" />
+      <img 
+        src="https://img.freepik.com/free-photo/close-up-couple-having-intimacy-moments_23-2149169149.jpg?semt=ais_hybrid&w=740" 
+        alt="Happy couple enjoying intimate moments - representing wellness and vitality from Neelkanth Palangtod Capsules" 
+        className="w-full mb-10 md:hidden"
+        loading="lazy"
+        width="740"
+        height="400"
+      />
         {/* Header */}
         <motion.div
           initial="initial"
@@ -82,7 +89,7 @@ const AboutTheProduct = () => {
           variants={fadeInUp}
           className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+          <h2 id="about-product-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
             About <span className="text-red-600">Neelkanth Palangtod</span> Capsules
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
@@ -96,20 +103,104 @@ const AboutTheProduct = () => {
 
         {/* Side Images */}
         <div className='absolute top-10 right-0 w-[15vw] hidden lg:block'>
-          <img src="https://media.post.rvohealth.io/wp-content/uploads/sites/3/2020/02/321428_2200-800x1200.jpg" alt="" className="w-full mb-2" />
-          <img src="https://img.freepik.com/free-photo/close-up-couple-having-intimacy-moments_23-2149169149.jpg?semt=ais_hybrid&w=740" alt="" className="w-full mb-2" />
-          <img src="https://img.freepik.com/free-photo/beautiful-intimacy-moment-couple_23-2149165264.jpg?semt=ais_hybrid&w=740&q=80" alt="" className="w-full mb-2" />
-          <img src="https://thumbs.dreamstime.com/b/top-view-lovers-having-sex-man-kissing-woman-top-view-passion-lovers-having-sex-men-kissing-woman-133821711.jpg" alt="" className="w-full mb-2" />
-          <img src="https://thumbs.dreamstime.com/b/couple-shares-tender-embrace-indoors-radiating-warmth-love-connection-room-has-bright-inviting-ambiance-image-356189482.jpg" alt="" className="w-full mb-2" />
-          <img src="https://as1.ftcdn.net/jpg/01/29/27/50/1000_F_129275012_nV91T7VwZU67VL0WzycSYvY8AKJqXprA.jpg" alt="" className="w-full" />
+          <img 
+            src="https://media.post.rvohealth.io/wp-content/uploads/sites/3/2020/02/321428_2200-800x1200.jpg" 
+            alt="Healthy lifestyle and wellness - benefits of natural supplements" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="300"
+          />
+          <img 
+            src="https://img.freepik.com/free-photo/close-up-couple-having-intimacy-moments_23-2149169149.jpg?semt=ais_hybrid&w=740" 
+            alt="Couple enjoying intimate wellness moment" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://img.freepik.com/free-photo/beautiful-intimacy-moment-couple_23-2149165264.jpg?semt=ais_hybrid&w=740&q=80" 
+            alt="Beautiful intimate moment representing relationship wellness" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://thumbs.dreamstime.com/b/top-view-lovers-having-sex-man-kissing-woman-top-view-passion-lovers-having-sex-men-kissing-woman-133821711.jpg" 
+            alt="Passionate couple - representing enhanced vitality and energy" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://thumbs.dreamstime.com/b/couple-shares-tender-embrace-indoors-radiating-warmth-love-connection-room-has-bright-inviting-ambiance-image-356189482.jpg" 
+            alt="Tender couple embrace showing warmth and connection" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://as1.ftcdn.net/jpg/01/29/27/50/1000_F_129275012_nV91T7VwZU67VL0WzycSYvY8AKJqXprA.jpg" 
+            alt="Happy couple representing improved wellness and vitality" 
+            className="w-full"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
         </div>
         <div className='absolute top-10 left-0 w-[15vw] hidden lg:block'>
-          <img src="https://us.123rf.com/450wm/lightfieldstudios/lightfieldstudios2002/lightfieldstudios200212757/140493967-side-view-of-boyfriend-kissing-attractive-girlfriend-with-closed-eyes.jpg?ver=6" alt="" className="w-full mb-2" />
-          <img src="https://thumbs.dreamstime.com/b/beutiful-sexual-couple-love-12898426.jpg" alt="" className="w-full mb-2" />
-          <img src="https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2020-11/dainis-graveris-spx5guvmd6m-unsplash.jpg?itok=o8AQYLpU" alt="" className="w-full mb-2" />
-          <img src="https://st3.depositphotos.com/16122460/19027/i/450/depositphotos_190274820-stock-photo-sexy-young-couple-being-intimate.jpg" alt="" className="w-full mb-2" />
-          <img src="https://st5.depositphotos.com/1008450/67901/i/450/depositphotos_679015176-stock-photo-beautiful-couple-smiling-hugging-while.jpg" alt="" className="w-full mb-2" />
-          <img src="https://img.freepik.com/free-photo/couple-love-waking-up-together_329181-13845.jpg?w=360" alt="" className="w-full" />
+          <img 
+            src="https://us.123rf.com/450wm/lightfieldstudios/lightfieldstudios2002/lightfieldstudios200212757/140493967-side-view-of-boyfriend-kissing-attractive-girlfriend-with-closed-eyes.jpg?ver=6" 
+            alt="Side view of boyfriend kissing girlfriend - representing enhanced intimacy"
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://thumbs.dreamstime.com/b/beutiful-sexual-couple-love-12898426.jpg" 
+            alt="Beautiful couple in love showing enhanced connection" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2020-11/dainis-graveris-spx5guvmd6m-unsplash.jpg?itok=o8AQYLpU" 
+            alt="Couple showing emotional and physical wellness connection"
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://st3.depositphotos.com/16122460/19027/i/450/depositphotos_190274820-stock-photo-sexy-young-couple-being-intimate.jpg" 
+            alt="Young couple being intimate - representing improved vitality" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://st5.depositphotos.com/1008450/67901/i/450/depositphotos_679015176-stock-photo-beautiful-couple-smiling-hugging-while.jpg" 
+            alt="Beautiful couple smiling and hugging - showing happiness and wellness" 
+            className="w-full mb-2"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
+          <img 
+            src="https://img.freepik.com/free-photo/couple-love-waking-up-together_329181-13845.jpg?w=360" 
+            alt="Couple in love waking up together - representing enhanced energy and vitality" 
+            className="w-full"
+            loading="lazy"
+            width="200"
+            height="133"
+          />
         </div>
 
         {/* Rest of the component remains unchanged */}

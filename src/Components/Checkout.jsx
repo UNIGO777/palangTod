@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, CreditCard, Truck, Shield, ArrowLeft, Package } from 'lucide-react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import PaymentStatusChecker from './PaymentStatusChecker';
+import FullPageLoader from './FullPageLoader';
 
 const Checkout = ({ onBack }) => {
   const [formData, setFormData] = useState({
@@ -31,6 +34,7 @@ const Checkout = ({ onBack }) => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState('Processing your order...');
   const [orderDetails, setOrderDetails] = useState(null);
   const [lastOrderId, setLastOrderId] = useState(() => {
     // Try to get last order ID from localStorage (for abandoned payment recovery)
@@ -56,6 +60,7 @@ const Checkout = ({ onBack }) => {
         }
       } catch (error) {
         console.error('Error fetching product data:', error);
+        toast.error('Failed to load product information. Please refresh the page.');
       }
     };
     
@@ -182,6 +187,7 @@ const Checkout = ({ onBack }) => {
       return data.data;
     } catch (error) {
       console.error('Order creation error:', error);
+      toast.error(error.message || 'Failed to create order. Please try again.');
       throw error;
     }
   };
@@ -202,6 +208,7 @@ const Checkout = ({ onBack }) => {
     const isScriptLoaded = await loadRazorpayScript();
     
     if (!isScriptLoaded) {
+      toast.error('Payment gateway failed to load. Please refresh and try again.');
       throw new Error('Razorpay SDK failed to load');
     }
 
@@ -231,6 +238,7 @@ const Checkout = ({ onBack }) => {
           const verifyData = await verifyResponse.json();
           
           if (verifyData.success) {
+            toast.success('Payment successful! Your order has been confirmed.');
             setOrderDetails({
               ...orderData,
               paymentId: response.razorpay_payment_id,
@@ -242,7 +250,7 @@ const Checkout = ({ onBack }) => {
           }
         } catch (error) {
           console.error('Payment verification error:', error);
-          alert('Payment verification failed. Please contact support.');
+          toast.error('Payment verification failed. Please contact support if money was debited.');
         } finally {
           setLoading(false);
         }
@@ -251,7 +259,7 @@ const Checkout = ({ onBack }) => {
       modal: {
         ondismiss: () => {
           setLoading(false);
-          alert('Payment window closed. If you completed the payment, your order will be processed automatically.');
+          toast.warning('Payment window closed. If you completed the payment, your order will be processed automatically.');
         }
       },
       prefill: {
@@ -270,6 +278,7 @@ const Checkout = ({ onBack }) => {
 
   // Handle COD payment
   const handleCODPayment = async (orderData) => {
+    toast.success('Order placed successfully! You will receive a confirmation email shortly.');
     setOrderDetails(orderData);
     setOrderSuccess(true);
     setLoading(false);
@@ -280,28 +289,33 @@ const Checkout = ({ onBack }) => {
     e.preventDefault();
     
     if (!validateForm()) {
+      toast.error('Please fill in all required fields correctly.');
       return;
     }
 
     setLoading(true);
+    setLoadingMessage('Creating your order...');
 
     try {
       const orderData = await createOrder();
 
       if (formData.payment.method === 'razorpay') {
+        setLoadingMessage('Initializing secure payment...');
         await handleRazorpayPayment(orderData);
       } else {
+        setLoadingMessage('Confirming your order...');
         await handleCODPayment(orderData);
       }
     } catch (error) {
       console.error('Order submission error:', error);
-      alert(error.message || 'Failed to process order. Please try again.');
+      toast.error(error.message || 'Failed to process order. Please try again.');
       setLoading(false);
     }
   };
 
   // Handle successful payment status check
   const handlePaymentStatusSuccess = (orderData) => {
+    toast.success('Your payment has been confirmed! Order is being processed.');
     setOrderDetails(orderData);
     setOrderSuccess(true);
     // Clear the stored order ID since it's now handled
@@ -348,16 +362,38 @@ const Checkout = ({ onBack }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-      {/* Check for abandoned payments */}
-      {lastOrderId && <PaymentStatusChecker orderId={lastOrderId} onSuccess={handlePaymentStatusSuccess} />}
+    <>
+      {/* Full Page Loader */}
+      <FullPageLoader isVisible={loading} message={loadingMessage} />
+      
+      {/* Toast Container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        toastStyle={{
+          fontSize: '14px',
+          borderRadius: '8px'
+        }}
+      />
+      
+      <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+        {/* Check for abandoned payments */}
+        {lastOrderId && <PaymentStatusChecker orderId={lastOrderId} onSuccess={handlePaymentStatusSuccess} />}
       
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Checkout</h1>
+        <header className="mb-8">
+          <h1 id="checkout-heading" className="text-2xl sm:text-3xl font-bold text-gray-900">Checkout</h1>
           <p className="text-gray-600">Complete your order for Neelkanth Palangtod Capsules</p>
-        </div>
+        </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Order Form */}
@@ -698,7 +734,8 @@ const Checkout = ({ onBack }) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

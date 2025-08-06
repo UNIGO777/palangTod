@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Components/Navbar';
@@ -6,6 +6,7 @@ import Hero from './Components/Hero';
 import Home from './Home';
 
 import AdminPanel from './Components/AdminPanel';
+import { initializeSEO, updatePageMeta } from './utils/seoOptimizations';
 import './App.css';
 
 // Add Lucide icons for professional UI
@@ -57,6 +58,50 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;
+  
+  // Initialize SEO optimizations
+  useEffect(() => {
+    initializeSEO();
+  }, []);
+  
+  // Update page meta based on route
+  useEffect(() => {
+    const pageMeta = {
+      '/': {
+        title: 'Neelkanth Palangtod Capsules - Natural Ayurvedic Strength Enhancement | 100% Herbal',
+        description: 'Boost your energy, stamina & performance naturally with Neelkanth Palangtod Capsules. 100% Ayurvedic formula with Ashwagandha, Shilajit & Safed Musli. No side effects. Order now!',
+        keywords: 'ayurvedic capsules, natural strength enhancement, stamina booster, energy pills, ashwagandha, shilajit, safed musli'
+      },
+      '/privacy-policy': {
+        title: 'Privacy Policy - Neelkanth Palangtod Capsules',
+        description: 'Read our comprehensive privacy policy to understand how we protect your personal information when you purchase Neelkanth Palangtod Capsules.',
+        keywords: 'privacy policy, data protection, personal information'
+      },
+      '/terms': {
+        title: 'Terms and Conditions - Neelkanth Palangtod Capsules',
+        description: 'Terms and conditions for purchasing and using Neelkanth Palangtod Capsules. Read our policies before making a purchase.',
+        keywords: 'terms and conditions, purchase policy, usage terms'
+      },
+      '/shipping': {
+        title: 'Shipping Policy - Neelkanth Palangtod Capsules',
+        description: 'Learn about our shipping policy, delivery times, and shipping charges for Neelkanth Palangtod Capsules orders across India.',
+        keywords: 'shipping policy, delivery, shipping charges, India delivery'
+      },
+      '/cancellation-refunds': {
+        title: 'Cancellation & Refunds - Neelkanth Palangtod Capsules',
+        description: 'Our cancellation and refund policy for Neelkanth Palangtod Capsules. Learn about return procedures and refund timelines.',
+        keywords: 'cancellation policy, refunds, return policy, money back guarantee'
+      },
+      '/contact': {
+        title: 'Contact Us - Neelkanth Palangtod Capsules',
+        description: 'Get in touch with us for any queries about Neelkanth Palangtod Capsules. Customer support, product information, and assistance.',
+        keywords: 'contact us, customer support, help, queries'
+      }
+    };
+    
+    const currentPageMeta = pageMeta[currentPath] || pageMeta['/'];
+    updatePageMeta(currentPageMeta.title, currentPageMeta.description, currentPageMeta.keywords);
+  }, [currentPath]);
 
   return (
     <div className="min-h-screen bg-white">

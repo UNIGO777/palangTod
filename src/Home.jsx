@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from './Components/Navbar'
+import Breadcrumbs from './Components/Breadcrumbs'
 import Hero from './Components/Hero'
 import OfferBar from './Components/OfferBar'
 import AboutTheProduct from './Components/AboutTheProduct'
@@ -27,16 +28,19 @@ const Home = () => {
   return (
     <>
       <Navbar/>
+      <Breadcrumbs />
       <Hero/>
       <OfferBar/>
-      <AboutTheProduct/>
-      {/* <ProductGallery/> */}
-      <BenefitsBanner/>
-      <Testimonials/>
-      <ResultsShowcase/>
-      <div id="checkout">
+      <article>
+        <AboutTheProduct/>
+        {/* <ProductGallery/> */}
+        <BenefitsBanner/>
+        <Testimonials/>
+        <ResultsShowcase/>
+      </article>
+      <section id="checkout" aria-labelledby="checkout-heading">
         <Checkout/>
-      </div>
+      </section>
     </> 
   )
 }
