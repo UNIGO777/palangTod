@@ -160,13 +160,30 @@ export const optimizeImages = () => {
 
 // Monitor Core Web Vitals
 export const monitorCoreWebVitals = () => {
-  if ('web-vital' in window) {
+  if (typeof window !== 'undefined') {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(console.log);
-      getFID(console.log);
-      getFCP(console.log);
-      getLCP(console.log);
-      getTTFB(console.log);
+      getCLS((metric) => {
+        console.log('CLS:', metric);
+        // Send to analytics if needed
+      });
+      getFID((metric) => {
+        console.log('FID:', metric);
+        // Send to analytics if needed
+      });
+      getFCP((metric) => {
+        console.log('FCP:', metric);
+        // Send to analytics if needed
+      });
+      getLCP((metric) => {
+        console.log('LCP:', metric);
+        // Send to analytics if needed
+      });
+      getTTFB((metric) => {
+        console.log('TTFB:', metric);
+        // Send to analytics if needed
+      });
+    }).catch((error) => {
+      console.warn('Failed to load web-vitals:', error);
     });
   }
 };

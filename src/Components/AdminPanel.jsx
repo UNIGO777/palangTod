@@ -122,11 +122,7 @@ const AdminPanel = () => {
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-500">
-              Default credentials: admin@neelkanthpharmacy.com / admin123
-            </p>
-          </div>
+          
         </motion.div>
       </div>
     );
@@ -280,9 +276,10 @@ const AdminPanel = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Orders</h3>
             <div className="space-y-3">
               {analytics.recentOrders.slice(0, 5).map((order) => (
+                
                 <div key={order._id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div>
-                    <p className="font-medium text-gray-900">{order.customer.name}</p>
+                    <p className="font-medium text-gray-900">{order.customer?.name}</p>
                     <p className="text-sm text-gray-600">{order.orderId}</p>
                   </div>
                   <div className="text-right">
@@ -349,7 +346,7 @@ const AdminPanel = () => {
       if (searchTerm) {
         filtered = filtered.filter(order =>
           order.orderId.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          order.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          order.customer?.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           order.customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
           order.customer.phone.includes(searchTerm)
         );
@@ -433,7 +430,7 @@ const AdminPanel = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                      <p className="text-gray-900">{selectedOrder.customer.name}</p>
+                      <p className="text-gray-900">{selectedOrder.customer?.name}</p>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -566,7 +563,7 @@ const AdminPanel = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <div className="text-sm font-medium text-gray-900">{order.customer.name}</div>
+                        <div className="text-sm font-medium text-gray-900">{order.customer?.name}</div>
                         <div className="text-sm text-gray-500">{order.customer.email}</div>
                       </div>
                     </td>
