@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, Leaf, Star, Shield, Clock, Award } from 'lucide-react'
 import ProductImage from '../assets/ProductImage.png'
+import logo from '../assets/logo2.png'
 
 const AboutTheProduct = () => {
   const fadeInUp = {
@@ -73,6 +74,7 @@ const AboutTheProduct = () => {
   return (
     <section className="py-8 relative sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white" aria-labelledby="about-product-heading">
       <div className="px-4 sm:px-8 md:px-12 lg:px-20 mx-auto max-w-7xl">
+        <div className='flex flex-col gap-2 mb-5  items-center justify-center'><img className='w-32 md:w-[20vw]' src={logo} alt="" /></div>
       <img 
         src="https://img.freepik.com/free-photo/close-up-couple-having-intimacy-moments_23-2149169149.jpg?semt=ais_hybrid&w=740" 
         alt="Happy couple enjoying intimate moments - representing wellness and vitality from Neelkanth Palangtod Capsules" 

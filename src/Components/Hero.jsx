@@ -77,7 +77,7 @@ const Hero = () => {
                 </motion.p>
               </div>
               
-              <div className="flex flex-col ml-12 items-center">
+              <div className="flex flex-col md:ml-12 items-center">
                 <motion.h1 
                   variants={textVariants}
                   className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-red-700 mb-2 uppercase text-center"
