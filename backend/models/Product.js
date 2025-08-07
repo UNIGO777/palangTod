@@ -47,7 +47,7 @@ productSchema.statics.getDefaultProduct = async function() {
   const newProduct = await this.create({
     name: 'Neelkanth Palangtod Capsules',
     price: 2400,
-    discount: 55,
+    discount: 50,
     description: 'Ayurvedic Strength Enhancement',
     active: true
   });
