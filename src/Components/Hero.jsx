@@ -126,8 +126,8 @@ const Hero = () => {
               variants={textVariants}
               className="flex flex-col items-center gap-3 mb-6"
             >
-              <span className="text-3xl sm:text-4xl font-bold">₹449</span>
-              <span className="text-base sm:text-lg line-through opacity-75">₹998</span>
+              <span className="text-3xl sm:text-4xl font-bold">₹1200</span>
+              <span className="text-base sm:text-lg line-through opacity-75">₹2400</span>
               <span className="bg-black text-white px-3 py-1 rounded text-sm sm:text-base">55% OFF</span>
             </motion.div>
             <motion.ul
